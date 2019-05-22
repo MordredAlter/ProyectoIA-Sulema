@@ -1,0 +1,75 @@
+  private void DetectaNumerosMatriz()
+        {
+            int cont = 0;
+            ComboBox[] ListaCombo = new ComboBox[15];
+            ComboBox[] ListaComboTerreno = new ComboBox[15];
+            Color[] colorSet = { Color.Red, Color.Blue, Color.Green, Color.Yellow,Color.AliceBlue,Color.Aqua
+            ,Color.Black};
+            Color end = Color.White;
+
+            String[] ListaTerrenos = {"Agua","Pasto","Tierra","Lava","Camino","Montaña"
+            ,"Bosque","Arena","Pantano","Pared"};
+         //   List<String> numListTerrno = new List<String>();
+            List<int> numList = new List<int>();
+            for (int i = 0; i < Matriz.Length; i++)
+            {
+                for (int j = 0; j < Matriz[0].Length; j++)
+                {
+                    if (!numList.Contains(Matriz[i][j]))
+                    {
+                        cont++;
+                        numList.Add(Matriz[i][j]);
+                    }
+                }
+
+            
+            }
+
+
+            Label[] CadenaLabel = new Label[15];
+  
+                for (int i = 0; i < cont; i++)
+                {
+                    CadenaLabel[i] = new Label();
+                ListaCombo[i] = new ComboBox();
+                ListaComboTerreno[i] = new ComboBox();
+                CadenaLabel[i].Name = String.Concat("Label", i.ToString());
+                    CadenaLabel[i].Text = String.Concat("Numero:",numList[i].ToString());
+                    //  CadenaLabel[i].Size = new Size(50, 50);
+                    // CadenaLabel[i].Location = new System.Drawing.Point(150, 150, (i * 28));
+                    CadenaLabel[i].Width = 60;
+                    CadenaLabel[i].Height = 20;
+                    CadenaLabel[i].Top = (i+1) * 50;
+                    CadenaLabel[i].Left = i * 0;
+
+                ListaComboTerreno[i].Name = String.Concat("ComboBoxTerreno", i.ToString());
+                ListaComboTerreno[i].Height = 20;
+                ListaComboTerreno[i].Width = 80;
+                ListaComboTerreno[i].Top = (i + 1) * 50;
+                ListaComboTerreno[i].Left = 60;
+
+                ListaCombo[i].Name = String.Concat("ComboBoxColor", i.ToString());
+                ListaCombo[i].Height = 20;
+                ListaCombo[i].Width = 80;
+                ListaCombo[i].Top = (i + 1) * 50;
+                ListaCombo[i].Left =  200;
+
+               
+                // CadenaLabel[i].Location = new Point(i, 20);
+                for (int j = 0; j < 7; j++)
+                {
+                    ListaCombo[i].Items.Add(colorSet[j]);
+
+                }
+                for (int x = 0; x < 10; x++)
+                {
+                    ListaComboTerreno[i].Items.Add(ListaTerrenos[x]);
+                }
+                this.Controls.Add(ListaCombo[i]);
+                this.Controls.Add(CadenaLabel[i]);
+                this.Controls.Add(ListaComboTerreno[i]);
+
+
+            }
+     
+        }
